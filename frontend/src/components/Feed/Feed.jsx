@@ -10,7 +10,7 @@ const Feed = ({ token, user }) => {
 
   useEffect(() => {
     async function fetchTweets() {
-      const res = await fetch(`${backendUrl}/api/v1/feed`, {
+      const res = await fetch(`${backendUrl}/api/v1/tweets/feed?userId=${user._id}`, {
         headers: { authorization: `Bearer ${token}` },
       });
 
