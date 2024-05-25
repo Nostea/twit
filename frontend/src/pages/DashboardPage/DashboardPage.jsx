@@ -1,20 +1,24 @@
 import { Link } from "react-router-dom";
 import Feed from "../../components/Feed/Feed";
 import NavBar from "../../components/NavBar/NavBar";
+import "./DashboardPage.css";
+import WriteTweet from "../../components/WriteTweet/WriteTweet.jsx";
 
-const DashboardPage = ({token, user}) => {
+const DashboardPage = ({ token, user }) => {
   return (
     <>
-      <h1>Your personal feed</h1>
-      <NavBar />
-      <Link to="/verifyEmail">
-        <button>Verify Email</button>
-      </Link>
-      <div>
-        <h4>Write a new tweet</h4>
-        <textarea placeholder="Write a tweet"></textarea>
+      <div className="dashboard-layout">
+        <NavBar />
+
+        <section className="feed-section">
+          <Link to="/verifyEmail">
+            <button>Verify Email</button>
+          </Link>
+          <WriteTweet />
+
+          <Feed token={token} user={user} />
+        </section>
       </div>
-      <Feed token={token} user={user} />
     </>
   );
 };

@@ -16,9 +16,9 @@ const Feed = ({ token, user }) => {
 
       const data = await res.json();
 
-      if (!data.result) return setErrorMessage(data.message || "Could not load tweets");
+      if (!data) return setErrorMessage(data || "Could not load tweets");
 
-      setTweets(data.result);
+      setTweets(data);
       setErrorMessage(""); // reset error message (zur sicherheit)
     }
 
@@ -27,18 +27,16 @@ const Feed = ({ token, user }) => {
   }, []);
 
   return (
-    <>
+    <div className="feed-container">
       <SearchBar />
-      <h3>Feed</h3>
+      <h2>Feed</h2>
 
-      <div></div>
-
-      <Tweet />
-      <Tweet />
-      <Tweet />
-      <Tweet />
-      <Tweet />
-    </>
+      <div className="tweet-grid">
+        {tweets.map((item, index) => (
+          <Tweet username={item.username} text={item.text} key={index} />
+        ))}
+      </div>
+    </div>
   );
 };
 

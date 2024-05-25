@@ -1,21 +1,11 @@
 import { User } from "../../models/User.js";
-import { sendEmail } from "../../utils/sendEmail.js";
 import { generateRandomSixDigitCode } from "../../utils/sixDigitCode.js";
 import { generateRandomSalt, hash } from "../../utils/hash.js";
 import { userToView } from "../helpers.js";
 
-export async function registerUser({
-  username,
-  bio,
-  email,
-  profileImg,
-  following,
-  follower,
-  password,
-}) {
+export async function registerUser({ username, bio, email, profileImg, following, follower, password }) {
   const foundUserWithEmail = await User.findOne({ email });
-  if (foundUserWithEmail)
-    throw new Error("User with this email already has an account");
+  if (foundUserWithEmail) throw new Error("User with this email already has an account");
 
   const passwordSalt = generateRandomSalt();
   const passwordHash = hash(`${password}${passwordSalt}`);

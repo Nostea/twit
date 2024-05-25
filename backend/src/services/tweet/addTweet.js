@@ -9,7 +9,10 @@ export async function addTweet(tweetInfo, authenticatedUserId) {
 
   const newTweet = await Tweet.create({
     ...tweetInfo,
-    userId: authenticatedUserId, // authenticatedUserId kann nur vom token kommen, deshalb sicherer (authenticatedUserId überschreibt die userId, die bei tweetInfo mitgeschickt wird)
+    userId: authenticatedUserId,
+    username: user.username,
+    profileImg: user.profileImg,
+    // authenticatedUserId kann nur vom token kommen, deshalb sicherer (authenticatedUserId überschreibt die userId, die bei tweetInfo mitgeschickt wird)
   });
   return newTweet;
 }

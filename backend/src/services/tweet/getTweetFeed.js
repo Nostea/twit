@@ -22,6 +22,11 @@ export async function getAllTweets(userId) {
 
   //! wir wollen die 2 arrays zusammenfügen
   const combinedTweetsArray = [];
+
+  const transformedUserTweets = [];
+
+ //* transformieren
+
   combinedTweetsArray.push(...foundTweets);
   combinedTweetsArray.push(...foundTweetFollowers);
 

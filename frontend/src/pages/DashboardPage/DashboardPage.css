@@ -1,0 +1,14 @@
+.write-tweet {
+  background-color: aliceblue;
+  padding: 2rem;
+}
+
+.dashboard-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.feed-section {
+  padding-top: 2rem;
+}

@@ -16,7 +16,7 @@ export function createToken(user, tokenType = "access") {
 
   // unterschiedliche expire times für unterschiedliche Arten von tokens
 
-  const expiresIn = { access: "1h", refresh: "2w" }[tokenType];
+  const expiresIn = { access: "8h", refresh: "2w" }[tokenType];
 
   const token = jwt.sign(payload, jwtSecret, { expiresIn });
 
