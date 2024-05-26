@@ -4,7 +4,7 @@ import Tweet from "../Tweet/Tweet.jsx";
 import "./Feed.css";
 import { backendUrl } from "../../api/api";
 
-const Feed = ({ token, user }) => {
+const Feed = ({ token, user, forceRefreshCount, setForceRefreshCount }) => {
   const [tweets, setTweets] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -24,7 +24,7 @@ const Feed = ({ token, user }) => {
 
     fetchTweets();
     // fetchUser();
-  }, []);
+  }, [forceRefreshCount]);
 
   return (
     <div className="feed-container">
@@ -33,7 +33,15 @@ const Feed = ({ token, user }) => {
 
       <div className="tweet-grid">
         {tweets.map((item, index) => (
-          <Tweet username={item.username} text={item.text} key={index} />
+          <Tweet
+            user={user}
+            text={item.text}
+            token={token}
+            tweet={item}
+            key={index}
+            forceRefreshCount={forceRefreshCount}
+            setForceRefreshCount={setForceRefreshCount}
+          />
         ))}
       </div>
     </div>
