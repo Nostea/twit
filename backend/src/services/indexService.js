@@ -1,3 +1,4 @@
+import { getCommentsByTweet } from "./comment/getCommentsByTweet.js";
 import { addComment } from "./comment/addCommentById.js";
 import { deleteComment } from "./comment/deleteCommentById.js";
 import { addTweet } from "./tweet/addTweet.js";
@@ -30,6 +31,7 @@ export const TweetService = {
 };
 
 export const CommentService = {
+  getCommentsByTweet,
   addComment,
   deleteComment,
 };
