@@ -3,11 +3,13 @@ import Feed from "../../components/Feed/Feed";
 import NavBar from "../../components/NavBar/NavBar";
 import "./DashboardPage.css";
 import WriteTweet from "../../components/WriteTweet/WriteTweet.jsx";
+import User from "../../components/User/User.jsx"
 
 const DashboardPage = ({ token, user }) => {
   return (
     <>
       <div className="dashboard-layout">
+        <User user={user} />
         <NavBar />
 
         <section className="feed-section">
