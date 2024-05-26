@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./WriteComment.css";
 import { backendUrl } from "../../api/api.jsx";
 
-const WriteComment = ({ user, token, tweet, forceRefreshCount, setForceRefreshCount }) => {
+const WriteComment = ({ user, token, tweet, forceCommentFeedReloadCount, setForceCommentFeedReloadCount }) => {
   const [commentText, setCommentText] = useState("");
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
@@ -21,7 +21,7 @@ const WriteComment = ({ user, token, tweet, forceRefreshCount, setForceRefreshCo
     document.getElementById("commentbox").value = "";
     setButtonDisabled(true);
 
-    setForceRefreshCount(++forceRefreshCount);
+    setForceCommentFeedReloadCount(++forceCommentFeedReloadCount);
   };
 
   const toggleButtonAndSetTweetText = (text) => {

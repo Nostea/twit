@@ -1,5 +1,5 @@
-import WriteComment from "../WriteComment/WriteComment.jsx";
 import "./Tweet.css";
+import CommentFeed from '../CommentFeed/CommentFeed';
 
 const Tweet = ({ text, user, token, tweet, forceRefreshCount, setForceRefreshCount }) => {
   return (
@@ -12,7 +12,9 @@ const Tweet = ({ text, user, token, tweet, forceRefreshCount, setForceRefreshCou
         <p>{user.username}</p>
         <p>{text}</p>
         <div>
-          <WriteComment user={user} token={token} tweet={tweet} forceRefreshCount={forceRefreshCount} setForceRefreshCount={setForceRefreshCount} />
+          <div>
+            <CommentFeed user={user} token={token} tweet={tweet} />
+          </div>
         </div>
       </div>
     </article>
