@@ -48,10 +48,10 @@ const UserRefresh = ({ user, token, setUser, setToken }) => {
       const timestampDiffs = expirationDateTimestamp*1000 - nowTimestamp // the token is valid for this amount of milliseconds
 
       // let's say we want to refresh the token, when the current accessToken is valid for less than a minute. we need to know, how much milliseconds this is
-      const minuteAsMilliseconds = 60 * 1000 // a minute has 60 seconds. a second has 1000 milliseconds
+      const oneMinuteAsMilliseconds = 60 * 1000 // a minute has 60 seconds. a second has 1000 milliseconds
 
       // if our timestampDiff is smaller than this value, we want to refresh
-      if (timestampDiffs < minuteAsMilliseconds) {
+      if (timestampDiffs < oneMinuteAsMilliseconds) {
         const refreshTokenResponse = await fetch(`${backendUrl}/api/v1/users/refreshToken`, {
             headers: { authorization: `Bearer ${token}`},
             method: "POST",
@@ -65,7 +65,7 @@ const UserRefresh = ({ user, token, setUser, setToken }) => {
             // User logout, since the server said, we are not authenticated. We reset the states. we also navigate back to the landing page
             setUser(null)
             setToken("")
-            navigate("/dashboard")
+            navigate("/login")
         }
       }
     }
